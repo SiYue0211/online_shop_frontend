@@ -64,7 +64,7 @@ export default {
       )
     },
     emitInput (val) {
-      console.log('emitInptut....')
+      console.log('emitInptut....', val)
       this.$emit('input', val)
     },
     handleRemove (file, fileList) {
@@ -88,8 +88,9 @@ export default {
       console.log('Upload successful')
       this.showFileList = true
       this.emitInput(this.getUrl(this.fileList[0].url))
+      // this.emitInput([this.getUrl(this.fileList[0].url)])
     },
-    getUrl (signedUrl) {
+    extractUrl (signedUrl) {
       var urlInfo = signedUrl.split('?')
       let url = urlInfo[0]
       return url
